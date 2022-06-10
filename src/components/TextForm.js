@@ -31,11 +31,14 @@ export default function TextForm(props) {
         copyText.select();           
          /* Copy the text inside the text field */
         navigator.clipboard.writeText(copyText.value);
+
+        props.showAlert("Text Copied","success")
     }
 
     const removeExtraSpace=()=>{
        const newString = text.replace(/\s+/g,' ').trim();
         setText(newString);
+        props.showAlert("Extra space removed","success")
     }
 
     return (
@@ -46,12 +49,12 @@ export default function TextForm(props) {
       <textarea value={text} onChange={onchangHandler} className="form-control" style={{backgroundColor: props.mode==='dark'?'grey':'white',color : props.mode==='dark'?'white':'black'}}  rows="8" id="mybox"/>
     </div>
 
-    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2' onClick={clickhandler} >Convert To Upper Case</button>
-    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2' onClick={handlelowClick}>Convert to lower case</button>
+    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2 my-2' onClick={clickhandler} >Convert To Upper Case</button>
+    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2 my-2' onClick={handlelowClick}>Convert to lower case</button>
 
-    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2' onClick={clearTextClick}>Clear Text</button>
-    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2' onClick={copyTextClick}>Copy Text</button>
-    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2' onClick={removeExtraSpace}>Remove Extra Space</button>
+    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2 my-2' onClick={clearTextClick}>Clear Text</button>
+    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2 my-2' onClick={copyTextClick}>Copy Text</button>
+    <button style={{color : props.mode==='dark'?'white':'black'}} className='btn btn-primary mx-2 my-2' onClick={removeExtraSpace}>Remove Extra Space</button>
 
 
 
@@ -60,7 +63,7 @@ export default function TextForm(props) {
 
      <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
          <h2>your text summary</h2>
-         <p>{text.split(" ").length} words {text.length} character</p>
+         <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words {text.length} character</p>
          <h3>Reading Time</h3>
          {0.008* text.split(" ").length}           
            <h3>Preview</h3>

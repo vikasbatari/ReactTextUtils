@@ -50,8 +50,8 @@ setTimeout(() => {
     <Alert alert={alert} />
     <div className="container">
     <Routes>
-    <Route exact path="/" element={<TextForm title="Enter text to analyze below" mode={mode} showAlert={showAlert}/>} />
-    <Route exact path="/about" element={<About />} />   
+    <Route exact="true" path="/" element={<TextForm title="Enter text to analyze below" mode={mode} showAlert={showAlert}/>} />
+    <Route exact="true" path="/about" element={<About mode={mode} />} />   
   </Routes>
   </div>
   </>

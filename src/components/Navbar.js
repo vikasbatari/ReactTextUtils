@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import '../App.css';
-import { Link,NavLink } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 
 export default function Navbar(props) {
   return (
-    <>
-   
-   
+  
+  
+  <>  
     
     
     <nav className= {`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -28,7 +28,7 @@ export default function Navbar(props) {
 
           <li className="nav-item">
         
-            <Link className="nav-link active" aria-current="page" to={"/about"} exact>{props.aboutText}</Link>
+            <Link className="nav-link active" aria-current="page" to={"/about"}>{props.aboutText}</Link>
           </li>
           
          
